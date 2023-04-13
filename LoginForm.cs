@@ -17,23 +17,21 @@ namespace WinFormsApp3
         {
             InitializeComponent();
         }
-        private void LoginButton_Click(object sender,
-       EventArgs e)
+        
+
+        private void button1_Click(object sender, EventArgs e)
         {
             User user;
             using (var context = new AppDbContext())
             {
-                var email = EmailTextBox.Text;
-                var password = PasswordTextBox.Text;
-                user = context.Users.FirstOrDefault(u =>
-               u.Email == email && u.Password == password);
+                var email = textBox1.Text;
+                var password = textBox2.Text;
+                user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
             }
             if (user != null)
             {
-                MessageBox.Show("Вы успешно авторизовались!", "Авторизация", MessageBoxButtons.OK,
-               MessageBoxIcon.Information);
-                MainForm mainForm = new MainForm(new
-               AppDbContext(), user);
+                MessageBox.Show("Вы успешно авторизовались!", "Авторизация", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MainForm mainForm = new MainForm(new AppDbContext(), user);
                 Hide();
                 mainForm.ShowDialog();
                 DialogResult dialogResult =
@@ -45,15 +43,13 @@ namespace WinFormsApp3
             }
             else
             {
-                MessageBox.Show("Неправильный email или пароль", "Ошибка авторизации", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBox.Show("Неправильный email или пароль", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void RegistrationButton_Click(object
-       sender, EventArgs e)
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            RegistrationForm registrationForm = new
-           RegistrationForm(new AppDbContext());
+            RegistrationForm registrationForm = new RegistrationForm(new AppDbContext());
             Hide();
             registrationForm.ShowDialog();
             Show();

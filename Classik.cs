@@ -16,13 +16,13 @@ namespace WinFormsApp3
         public string Email { get; set; }
         public string NumberPhone { get; set; }
         public string Password { get; set; }
-        public List<Orders> Orders { get; set; }
+        public List<Order> Orders { get; set; }
         public User()
         {
-            Orders = new List<Orders>();
+            Orders = new List<Order>();
         }
     }
-    public class Orders
+    public class Order
     {
         public int Id { get; set; }
         public string Date_t { get; set; }
@@ -35,7 +35,7 @@ namespace WinFormsApp3
     {
         private const string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog = LibraryDb; Integrated Security = True;";
         public DbSet<User> Users { get; set; }
-        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder
        optionsBuilder)
         {
