@@ -35,7 +35,6 @@ namespace WinFormsApp3
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = _user.Orders;
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,6 +50,11 @@ namespace WinFormsApp3
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

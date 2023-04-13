@@ -36,8 +36,7 @@ namespace WinFormsApp3
         private const string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog = LibraryDb; Integrated Security = True;";
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder
-       optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConnectionString);
         }
