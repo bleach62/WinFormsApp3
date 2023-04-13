@@ -23,13 +23,15 @@ namespace WinFormsApp3
             var user = new User
             {
                 Name = textBox1.Text,
-                Email = EmailTextBox.Text,
-                Password = PasswordTextBox.Text
+                Surname = textBox2.Text,
+                Role = textBox3.Text,
+                Email = textBox4.Text,
+                NumberPhone = textBox5.Text,
+                Password = textBox6.Text
             };
             _context.Users.Add(user);
             _context.SaveChanges();
-            MessageBox.Show("Вы успешно зарегистрировались!",
-           "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Вы успешно зарегистрировались!","Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
     }
