@@ -26,9 +26,9 @@ namespace WinFormsApp3
     {
         public int Id { get; set; }
         public string Date_t { get; set; }
-        public int Client { get; set; }
-        public string Countof { get; set; }
         public int UserId { get; set; }
+        public string Product { get; set; }
+        public string Countof { get; set; }
         public User User { get; set; }
     }
     public class AppDbContext : DbContext

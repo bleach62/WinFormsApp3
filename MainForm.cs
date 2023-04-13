@@ -27,10 +27,10 @@ namespace WinFormsApp3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var bookForm = new BookForm(_context, _user);
-            if (bookForm.ShowDialog() == DialogResult.OK)
+            var orderForm = new OrderForm(_context, _user);
+            if (orderForm.ShowDialog() == DialogResult.OK)
             {
-                _user.Orders.Add(bookForm.Book);
+                _user.Orders.Add(orderForm.Order);
                 _context.SaveChanges();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = _user.Orders;
@@ -41,11 +41,16 @@ namespace WinFormsApp3
         private void button2_Click(object sender, EventArgs e)
         {
             var selectedRow = dataGridView1.SelectedRows[0];
-            var book = (Orders)selectedRow.DataBoundItem;
-            _user.Orders.Remove(book);
+            var order = (Order)selectedRow.DataBoundItem;
+            _user.Orders.Remove(order);
             _context.SaveChanges();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _user.Orders;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
