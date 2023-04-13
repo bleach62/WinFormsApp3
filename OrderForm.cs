@@ -24,7 +24,8 @@ namespace WinFormsApp3
             _user = user;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             DateTime today = DateTime.Today;
             var order = new Order
@@ -38,7 +39,6 @@ namespace WinFormsApp3
             _context.SaveChanges();
             Order = order;
             DialogResult = DialogResult.OK;
-
         }
     }
 }

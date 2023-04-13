@@ -47,7 +47,7 @@ namespace WinFormsApp3
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _user.Orders;
         }
-
+       
         private void button3_Click(object sender, EventArgs e)
         {
             Close();

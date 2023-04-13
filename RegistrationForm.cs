@@ -18,7 +18,9 @@ namespace WinFormsApp3
             InitializeComponent();
             _context = context;
         }
-        private void RegisterButton_Click(object sender, EventArgs e)
+        
+
+        private void button1_Click(object sender, EventArgs e)
         {
             var user = new User
             {
@@ -31,7 +33,7 @@ namespace WinFormsApp3
             };
             _context.Users.Add(user);
             _context.SaveChanges();
-            MessageBox.Show("Вы успешно зарегистрировались!","Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Вы успешно зарегистрировались!", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
     }
