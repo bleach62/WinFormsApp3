@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp3
 {
@@ -19,7 +22,8 @@ namespace WinFormsApp3
             InitializeComponent();
             _context = context;
             _user = user;
-            _user.Orders = _context.Orders.Where(b => b.UserId == _user.Id).ToList();
+            int Id = _user.Id;
+            _user = _context.Users.Include(u => u.Orders).FirstOrDefault(u => u.Id == Id);
             Text = $"Библиотека пользователя {_user.Name}";
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = _user.Orders;
@@ -54,6 +58,32 @@ namespace WinFormsApp3
 
         private void button4_Click(object sender, EventArgs e)
         {
+            var selectedrow = dataGridView1.SelectedRows[0];
+            var order = (Order)selectedrow.DataBoundItem;
+            int numeric;
+            bool isNumber = int.TryParse(textBox1.Text, out numeric);
+            Regex r = new Regex(@"\d{2}/\d{2}/\d{4}");
+            if (radioButton1.Checked == true && textBox1.Text != "" && r.IsMatch(textBox1.Text))
+            {
+                order.Date_t =  textBox1.Text;
+                _context.SaveChanges();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = _user.Orders;
+            }
+            else if (radioButton2.Checked == true && textBox1.Text != "" && !(Regex.IsMatch(textBox1.Text, @"\P{IsCyrillic}")))
+            {
+                order.Product = textBox1.Text;
+                _context.SaveChanges();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = _user.Orders;
+            }
+            else if (radioButton3.Checked == true && textBox1.Text != "" && isNumber)
+            {
+                order.Countof = textBox1.Text;
+                _context.SaveChanges();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = _user.Orders;
+            }
 
         }
     }
